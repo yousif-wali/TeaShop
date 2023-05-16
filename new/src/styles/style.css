@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*          Header      */
+header{
+    border-bottom:1px solid black;
+    box-shadow:0px -5px 15px 17px grey;
+    position:sticky;
+    top:0;
+    background-color: white;
+}
+header img{
+    height:40px;
+    margin:1em;
+    width:150px;
+    object-fit: cover;
+    border-radius:15px;
+}
+
+#bookmark::after, #cart:after{
+    content: attr(data-total);
+    position:absolute;
+    width:20px;
+    height:20px;
+    color:white;
+    background-color: red;
+    text-align: center;
+    font-size:10pt;
+    border-radius: 50%;
+    left:12px;
+    top:-5px;
+}
+
+.icons{
+    padding:1em;
+    display:flex;
+    justify-content: space-evenly;
+}
+.icons i{
+    color:olive;
+    font-size:1.25rem;
+    cursor:pointer;
+    transition:all 0.3s ease-in; 
+    position: relative;
+}
+.icons i:hover{
+   color:orange
+}
+/*          MAIN        */
+.posts{
+    width:80vw;
+    margin:3em auto;
+    display:grid;
+    grid-template-columns: 270px 270px 270px;
+    align-items: start;
+    gap: 20px;
+}
+.post{
+    border:1px solid black;
+    padding:1.5em;
+    border-radius:5px;
+    box-shadow:0px 0px 6px 7px grey;
+    transition:all 0.3s ease-in;
+}
+.post:hover{
+    box-shadow:0px 0px 3px 4px grey;
+}
+.post img{
+    width:100%;
+    border-radius:15px;
+    aspect-ratio: 1/1;
+}
+.post i.bi{
+    font-size:1.2rem;
+}
+@media screen and (max-width: 60em){
+    .posts{
+        grid-template-columns: 270px;
+        width:60vw;
+    }
+    .navbar-large{
+        display:none;
+    }
+    .extra-space{
+        display:block!important;
+    }
+}

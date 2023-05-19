@@ -1,5 +1,5 @@
 <?php
-$email = isset($_SESSION['email']) ? $_SESSION['email'] : 'not logged in';
+$email = isset($_SESSION['username']) ? $_SESSION['username'] : 'not logged in';
 echo "<script>let email = '$email';</script>";
 ?>
 <header class="row w-100 m-auto justify-between">

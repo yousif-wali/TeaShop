@@ -22,7 +22,7 @@
             <h4>Login</h4>
             <section class="form-floating">
                 <input class="form-control" name="email" id="email" placeholder="i" required/>
-                <label for="email">Email</label>
+                <label for="email">Email | Username</label>
             </section>
             <section class="form-floating">
                 <input class="form-control" name="pwd" id="pwd" placeholder="i" type="password" required/>

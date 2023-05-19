@@ -13,18 +13,19 @@
     <h1 style="margin-left:40vw">Bookmarks</h1>
     <section class="posts">
     <?php
-    $items = getAllBookmarks($con);
+    $items = getAllBookmarks($db);
     if($items != null){
         foreach($items as $item){
           //  $id = $item[0];
-            $itemId = $item[1];
-            $post = getAllPostsById($con, $itemId);
+            $itemId = $item['id'];
+            $post = getAllPostsById($db, $itemId);
             foreach($post as $detail){
-                $image = $detail[0];
-                $title = $detail[1];
-                $description = $detail[2];
-                $price = $detail[3];
-                $id = $detail[4];
+                $image = $detail['img'];
+                $title = $detail['title'];
+                $description = $detail['description'];
+                $price = $detail['price'];
+                $id = $detail['id'];
+                $date = $detail['dateuploaded'];
                 echo "
                 <section class='post'>
                 <h4>$title</h4>
@@ -32,7 +33,8 @@
                 <p>$$price</p>
                 <h6>$description</h6>
                 <section class='flex flex-column'>
-                    <button class='btn btn-danger w-100' onclick='dropbookmark($id, `$title`)'>Delete</button>   
+                    <button class='btn btn-danger w-50' onclick='dropbookmark($id, `$title`)'>Delete</button> 
+                    <button class='bi bi-bag-plus col-5 btn btn-warning' onclick='addCart($id, `$email`)'></button>  
                 </section>
                 </section>";
     

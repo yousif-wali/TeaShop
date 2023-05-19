@@ -1,60 +1,65 @@
 <?php
-require "database.php";
+// Including your database file     
+include 'database.php';
+// Initializing the credentials for your database
+$con = new MySQLiConnection("localhost", "root", "", "teashop");
+// Connecting to your database
+$db = new DB($con); 
 session_start();
-function getAllPosts($con){
-    $result = mysqli_query($con, "SELECT * FROM item");
-    if(mysqli_num_rows($result) > 0){
-        $list = [];
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $list[$i++] = [$row['name'], $row['title'], $row['description'], $row['price'], $row['id']];
-        }
-        return $list;
+function getAllPosts($db){
+    $result = $db->query('CALL view_items();');  
+    $list = [];
+    $i = 0;
+    foreach($result as $data){
+        $list[$i++] = $data;
     }
+    return $list;
 }
-function getAllPostsById($con, $id){
-    $result = mysqli_query($con, "SELECT * FROM item WHERE id = '$id'");
-    if(mysqli_num_rows($result) > 0){
-        $list = [];
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $list[$i++] = [$row['name'], $row['title'], $row['description'], $row['price'], $row['id']];
-        }
-        return $list;
+function getAllPostsById($db, $id){
+    $result = $db->query('CALL view_items_id(?);', [$id]);  
+    $list = [];
+    $i = 0;
+    foreach($result as $data){
+        $list[$i++] = $data;
     }
+    return $list;
 }
-function getAllBookmarks($con){
-    $email = isset($_SESSION['email']) ? $_SESSION['email'] : "4kjlkj;q09j4j09j";
-    $result = mysqli_query($con, "SELECT * FROM bookmarks where email = '$email'");
-    if(mysqli_num_rows($result) > 0){
-        $list = [];
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $list[$i++] = [$row['id'], $row['item']];
-        }
-        return $list;
+function getAllBookmarks($db){
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : "4kjlkj;q09j4j09j";
+    $result = $db->query('CALL view_bookmark_username(?);', [$username]);  
+    $list = [];
+    $i = 0;
+    foreach($result as $data){
+        $list[$i++] = $data;
     }
+    return $list;
 }
-function getAllCarts($con){
-    $email = isset($_SESSION['email']) ? $_SESSION['email'] : "4kjlkj;q09j4j09j";
-    $result = mysqli_query($con, "SELECT * FROM cart where email = '$email'");
-    if(mysqli_num_rows($result) > 0){
-        $list = [];
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $list[$i++] = [$row['id'], $row['item']];
-        }
-        return $list;
+function getAllCarts($db){
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : "4kjlkj;q09j4j09j";
+    $result = $db->query('CALL view_carts_username(?);', [$username]);  
+    $list = [];
+    $i = 0;
+    foreach($result as $data){
+        $list[$i++] = $data;
     }
+    return $list;
 }
 if(isset($_POST['signup'])){
     $email = $_POST['email'];
+    $username = $_POST['username'];
     $pwd = $_POST['pwd'];
-    $emailExist = mysqli_query($con, "select * from users where email = '$email'");
-    if(mysqli_num_rows($emailExist) == 0){
-        mysqli_query($con, "insert into users (email, pwd) values ('$email', '$pwd')");
-        $_SESSION['email'] = $email;
-        header("Location: ./../");
+    $emailExist = $db->query("CALL email_exists(?)", [$email]);
+    if($emailExist[0]['number'] == 0){
+        $usernameExist = $db->query('CALL username_exists(?)', [$username]);
+        if($usernameExist[0]['number'] == 0){
+            $db->query('CALL signup(?, ?, ?);', [$username, $email, $pwd]);
+            $_SESSION['email'] = $email;
+            $_SESSION['username'] = $username;
+            header("Location: ./../");
+        }else{
+            setcookie('signuperr', "true", time()+15, "/");
+            header("Location: ./../pages/signup.php");
+        }
     }else{
         setcookie('signuperr', "true", time()+15, "/");
         header("Location: ./../pages/signup.php");
@@ -68,11 +73,19 @@ if(isset($_REQUEST['logout'])){
 if(isset($_POST['login'])){
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
-    $sql = mysqli_query($con, "SELECT * FROM users WHERE email = '$email'");
-    if(mysqli_num_rows($sql) > 0){
-        if($pwd == mysqli_fetch_assoc($sql)['pwd']){
-            $_SESSION['email'] = $email;
+    $sql = $db->query('CALL login_email(?)', [$email]);
+    if($sql[0]['id'] != null){
+        if(password_verify($pwd, $sql[0]['pwd'])){
+            $_SESSION['email'] = $sql[0]['email'];
+            $_SESSION['username'] = $sql[0]['username'];
             header("Location: ./../");
+        }else if($pwd == $sql[0]['pwd']){
+            $_SESSION['email'] = $sql[0]['email'];
+            $_SESSION['username'] = $sql[0]['username'];
+            header("Location: ./../");
+        }else{
+            setcookie('loginerr', "true", time()+15, "/");
+            header("Location: ./../pages/login.php");
         }
     }else{
         setcookie('loginerr', "true", time()+15, "/");
@@ -80,49 +93,49 @@ if(isset($_POST['login'])){
     }
 }
 if(isset($_REQUEST['getBookmarks'])){
-    $email = $_REQUEST['getBookmarks'];
-    $sql = mysqli_query($con, "SELECT * FROM bookmarks WHERE email = '$email'");
-    echo mysqli_num_rows($sql);
+    $username = $_REQUEST['getBookmarks'];
+    $sql = $db->query("CALL bookmark_count(?)", [$username]);
+    echo $sql[0]["number"];
 }
 if(isset($_REQUEST['addBookmarks'])){
-    $email = $_REQUEST['addBookmarks'];
+    $username = $_REQUEST['addBookmarks'];
     $item  = $_REQUEST['id'];
-    mysqli_query($con, "INSERT INTO bookmarks (email, item) values ('$email', '$item')");
+    if($username != "not logged in")
+        $db->query('CALL add_bookmark(?,?)', [$username, $item]);
 }
 if(isset($_REQUEST['getCarts'])){
-    $email = $_REQUEST['getCarts'];
-    $sql = mysqli_query($con, "SELECT * FROM cart WHERE email = '$email'");
-    echo mysqli_num_rows($sql);
+    $username = $_REQUEST['getCarts'];
+    $sql = $db->query('CALL cart_count(?)', [$username]);
+    echo $sql[0]['number'];
 }
 if(isset($_REQUEST['addCart'])){
-    $email = $_REQUEST['addCart'];
+    $username = $_REQUEST['addCart'];
     $item  = $_REQUEST['id'];
-    mysqli_query($con, "INSERT INTO cart (email, item) values ('$email', '$item')");
+    if($username != "not logged in")
+        $db->query('CALL add_cart(?, ?)', [$username, $item]);
 }
 if(isset($_REQUEST['deleteBookmark'])){
     $id  = $_REQUEST['deleteBookmark'];
-    mysqli_query($con, "DELETE FROM bookmarks WHERE item = '$id' limit 1");
+    $db->query('CALL delete_bookmark_items(?)', [$id]);
 }
 if(isset($_REQUEST['deleteCart'])){
     $id  = $_REQUEST['deleteCart'];
-    mysqli_query($con, "DELETE FROM cart WHERE item = '$id' limit 1");
+    $db->query('CALL delete_cart_id(?)', [$id]);
 }
 if(isset($_REQUEST['payee'])){
     $email = $_REQUEST['payee'];
     $items = $_REQUEST['items'];
     $total = $_REQUEST['total'];
-    mysqli_query($con, "INSERT INTO orders (email, items, total) VALUES ('$email', '$items', '$total')");
-    mysqli_query($con, "DELETE FROM cart WHERE email = '$email'");
+    $db->query("CALL delete_cart_username(?)", [$_SESSION['username']]);
+    $db->query("CALL add_orders(?, ?, ?)", [$email, $items, $total]);
 }
-function getAllHistory($con){
-    $email = isset($_SESSION['email']) ? $_SESSION['email'] : "4kjlkj;q09j4j09j";
-    $result = mysqli_query($con, "SELECT * FROM orders where email = '$email' order by paymentDate desc");
-    if(mysqli_num_rows($result) > 0){
-        $list = [];
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $list[$i++] = [$row['items'], $row['total'], $row['payment'], $row['paymentDate']];
-        }
-        return $list;
+function getAllHistory($db){
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : "4kjlkj;q09j4j09j";
+    $result = $db->query('CALL view_orders_username(?);', [$username]);  
+    $list = [];
+    $i = 0;
+    foreach($result as $data){
+        $list[$i++] = $data;
     }
+    return $list;
 }

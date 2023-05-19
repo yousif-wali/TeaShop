@@ -21,6 +21,10 @@
         <form method="post" action="./include/validator.php">
             <h4>Signup</h4>
             <section class="form-floating">
+                <input class="form-control" name="username" id="username" placeholder="i"/>
+                <label for="username">Username</label>
+            </section>
+            <section class="form-floating">
                 <input class="form-control" name="email" id="email" placeholder="i"/>
                 <label for="email">Email</label>
             </section>

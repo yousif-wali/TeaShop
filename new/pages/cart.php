@@ -15,19 +15,19 @@
     <?php
     $total = 0;
     $totalItem = 0;
-    $items = getAllCarts($con);
+    $items = getAllCarts($db);
     if($items != null){
     foreach($items as $item){
       //  $id = $item[0];
-        $itemId = $item[1];
-        $post = getAllPostsById($con, $itemId);
+        $itemId = $item['id'];
+        $post = getAllPostsById($db, $itemId);
         foreach($post as $detail){
-            $image = $detail[0];
-            $title = $detail[1];
-            $description = $detail[2];
-            $price = $detail[3];
+            $id = $detail['id'];
+            $title = $detail['title'];
+            $description = $detail['description'];
+            $price = $detail['price'];
+            $image = $detail['img'];
             $total += $price;
-            $id = $detail[4];
             $totalItem++;
             echo "
             <section class='post'>
@@ -108,12 +108,12 @@ else{
         </thead>
         <tbody>          
             <?php
-            $transaction = getAllHistory($con);
+            $transaction = getAllHistory($db);
             foreach($transaction as $order){
-                $number = $order[0];
-                $amount = $order[1];
-                $status = $order[2];
-                $date   = $order[3];
+                $number = $order['items'];
+                $amount = $order['total'];
+                $status = $order['payment'];
+                $date   = $order['paymentDate'];
                 echo "
                 <tr>
                     <td align='center'>$number</td>

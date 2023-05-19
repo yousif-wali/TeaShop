@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "11111111", "garden");
+require "database.php";
 session_start();
 function getAllPosts($con){
     $result = mysqli_query($con, "SELECT * FROM item");

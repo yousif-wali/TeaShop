@@ -1,0 +1,4 @@
+RewriteEngine on
+        RewriteRule ^Home ./index.php
+        RewriteRule ^Login ./pages/Login.php
+        RewriteRule ^SecuredLogin ./include/validator.php

@@ -1,0 +1,23 @@
+body{
+    overflow-x:hidden;
+}
+header{
+    width:100vw;
+    height:40px;
+    background-color: hsl(0, 100%, 0%, 0.8);
+    backdrop-filter: blur(2px);
+    color:white;
+    padding:1em;
+}
+aside{
+
+    border-right:1px solid black;
+    height:calc(100vh - 40px);
+}
+[data-type="selection"] section{
+    display:none;
+    padding:3em;
+}
+[data-type="selection"] section:first-child{
+    display:block;
+}

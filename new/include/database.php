@@ -33,7 +33,7 @@ class DB {
     $result = $stmt->get_result();
     $rows = [];
     if (strpos($sql, 'SELECT') === 0 || strpos($sql, 'CALL') === 0) {
-            if(strpos($sql, 'view') > 0 || strpos($sql, 'get') > 0 || strpos($sql, 'count') > 0){
+            if(strpos($sql, 'view') > 0 || strpos($sql, 'get') > 0 || strpos($sql, 'count') > 0 || strpos($sql, 'login') > 0){
                 while ($row = $result->fetch_assoc()) {           
                     foreach ($row as $key => $value) {
                         $row[$key] = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE);

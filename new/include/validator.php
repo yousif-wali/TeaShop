@@ -2,7 +2,7 @@
 // Including your database file     
 include 'database.php';
 // Initializing the credentials for your database
-$con = new MySQLiConnection("localhost", "root", "", "teashop");
+$con = new MySQLiConnection("localhost", "root", "11111111", "teashop");
 // Connecting to your database
 $db = new DB($con); 
 session_start();
@@ -74,7 +74,7 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
     $sql = $db->query('CALL login_email(?)', [$email]);
-    if($sql[0]['id'] != null){
+    if($sql[0]['id'] != null){       
         if(password_verify($pwd, $sql[0]['pwd'])){
             $_SESSION['email'] = $sql[0]['email'];
             $_SESSION['username'] = $sql[0]['username'];
@@ -88,6 +88,7 @@ if(isset($_POST['login'])){
             header("Location: ./../pages/login.php");
         }
     }else{
+        
         setcookie('loginerr', "true", time()+15, "/");
         header("Location: ./../pages/login.php");
     }

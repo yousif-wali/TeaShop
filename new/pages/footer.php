@@ -70,12 +70,12 @@ footer{
       <input type="text" placeholder="Your Coment">
       <button>Send</button>
       <p>Connect  With Us</p>
-      <i class="fa fa-facebook"></i>
-      <i class="fa fa-twitter"></i>
-      <i class="fa fa-instagram"></i>
-      <i class="fa fa-linkedin"></i>
-      <i class="fa fa-youtube"></i>
-      <i class="fa fa-pinterest"></i>
+      <i class="bi bi-facebook"></i>
+      <i class="bi bi-twitter"></i>
+      <i class="bi bi-instagram"></i>
+      <i class="bi bi-linkedin"></i>
+      <i class="bi bi-youtube"></i>
+      <i class="bi bi-pinterest"></i>
       
         </div>
         <div>
@@ -105,9 +105,9 @@ footer{
       <div>
         <p>CONTACT US</p>
         <ul>
-          <li><a href="#"><i class="fa fa-map-marker"></i>Duhok _ Azade-City</a></li>
-          <li><a href="#"><i class="fa fa-phone"></i> + 0780 431 51 12</a></li>
-          <li><a href="#"><i class="fa fa-envelope"></i>TeaShop@emali.com</a></li>
+          <li><a href="#"><i class="bi bi-map"></i>Duhok _ Azade-City</a></li>
+          <li><a href="#"><i class="bi bi-phone"></i> + 0780 431 51 12</a></li>
+          <li><a href="#"><i class="bi bi-envelope"></i>TeaShop@emali.com</a></li>
       </ul>
       </footer>
 

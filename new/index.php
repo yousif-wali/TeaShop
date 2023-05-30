@@ -59,9 +59,9 @@
 
 
     </div>
-    <main>
+    <?php include "./pages/cube.php";?>
     <?php include "./pages/footer.php";?>
-    </main>
+  
     <script>
             updateBookmark(email);
             updateCart(email);

@@ -96,6 +96,12 @@ header section:nth-child(2){
     aspect-ratio: 16/9;
     float:right;
 }
+#slideshowContainer{
+    min-height:350px;
+}
+#slideshowContainer > *{
+    height:100%;
+}
 .slideshow{
     transition: all 1s ease-in;
 }

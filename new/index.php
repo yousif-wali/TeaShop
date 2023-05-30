@@ -12,7 +12,7 @@
 
     <!-- Title  TeaShop_And_Image_Coffe_In_Header -->
 
-    <section>
+    <section id="slideshowContainer">
         <section class="slideshow">
             <div class='Title_TeaShop'>
                 <section>

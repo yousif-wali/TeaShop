@@ -11,8 +11,9 @@
             $uploaded = $item['dateuploaded'];
             echo "
             <section class='post'>
-            <h4>$title</h4>
+          
             <img src='./src/images/$image'/>
+            <h4>$title</h4>
             <p>$$price</p>
             <h6>$description</h6>
             <section class='flex flex-column'>

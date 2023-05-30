@@ -2,14 +2,32 @@
     margin: 0;
     padding: 0;
 }
+/*       All_Font_Style    */
+* {
+    font-family: 'ayman'!important;
+    font-weight: bolder;
+}
+
+@font-face {
+font-family: 'ayman';
+src: url( 'rabar.woff');
+
+}
+/*       background_Color_Body         */
+body {
+   
+    background-image: linear-gradient(to right ,#864e2d,#a67a4d);
+
+}
 
 /*          Header      */
-header{
-    border-bottom:1px solid black;
-    box-shadow:0px -5px 15px 17px grey;
+header{   
+    
     position:sticky;
     top:0;
-    background-color: white;
+    background-image: linear-gradient(to bottom ,#c17508,#863e00);
+    border-radius: 25px;
+    
 }
 header img{
     height:40px;
@@ -39,7 +57,7 @@ header img{
     justify-content: space-evenly;
 }
 .icons i{
-    color:olive;
+    color:rgb(255, 246, 231);
     font-size:1.25rem;
     cursor:pointer;
     transition:all 0.3s ease-in; 
@@ -49,7 +67,33 @@ header img{
    color:orange
 }
 /*          MAIN        */
+
+.Title_TeaShop{
+    width: 40%;
+    color: rgb(235, 216, 183);
+    text-align: justify;
+    margin: 6%;
+    word-spacing: 3px;
+    
+}
+
+/*          A brief history of tea_Style        */
+
+.history_Box{
+
+    border: 2px solid #e78f41;
+    color: white;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 21px;
+    word-spacing: 2px;
+}
+.history_Box h4{
+    padding-top: 3%;
+}
+
 .posts{
+  
     width:80vw;
     margin:3em auto;
     display:grid;
@@ -58,14 +102,14 @@ header img{
     gap: 20px;
 }
 .post{
-    border:1px solid black;
+    background-image: linear-gradient(to right ,#ad7949,#c89c6b);
     padding:1.5em;
-    border-radius:5px;
-    box-shadow:0px 0px 6px 7px grey;
+    border-radius:12px;
+    box-shadow:0px 0px 20px rgba(56, 34, 0, 0.781);
     transition:all 0.3s ease-in;
 }
 .post:hover{
-    box-shadow:0px 0px 3px 4px grey;
+    box-shadow:0px 0px 20px  rgba(255, 153, 0, 0.5);
 }
 .post img{
     width:100%;

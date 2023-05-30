@@ -1,9 +1,7 @@
+/*       All_Font_Style    */
 *{
     margin: 0;
     padding: 0;
-}
-/*       All_Font_Style    */
-* {
     font-family: 'ayman'!important;
     font-weight: bolder;
 }
@@ -26,8 +24,10 @@ header{
     position:sticky;
     top:0;
     background-image: linear-gradient(to bottom ,#c17508,#863e00);
-    border-radius: 25px;
-    
+    width:95vw;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    justify-content: space-between!important;
 }
 header img{
     height:40px;
@@ -36,7 +36,21 @@ header img{
     object-fit: cover;
     border-radius:15px;
 }
-
+header section:nth-child(1){
+    width: 15%;
+}
+header section:nth-child(2){
+    width:40%;
+}
+.navbar-nav li{
+    margin:0 0.25em;
+}
+.navbar-nav li a{
+    color:white;
+}
+.navbar-nav li a.active, .navbar-nav li a:hover, .navbar-nav li a:focus{
+    color:orange!important;
+}
 #bookmark::after, #cart:after{
     content: attr(data-total);
     position:absolute;
@@ -69,12 +83,21 @@ header img{
 /*          MAIN        */
 
 .Title_TeaShop{
-    width: 40%;
+    display: flex!important;
     color: rgb(235, 216, 183);
     text-align: justify;
-    margin: 6%;
     word-spacing: 3px;
-    
+    padding:3em;  
+    justify-content: space-between;
+    align-items: start;
+}
+.Title_TeaShop img{
+    width:60%;
+    aspect-ratio: 16/9;
+    float:right;
+}
+.slideshow{
+    transition: all 1s ease-in;
 }
 
 /*          A brief history of tea_Style        */
@@ -87,6 +110,11 @@ header img{
     padding: 5%;
     border-radius: 21px;
     word-spacing: 2px;
+}
+.history_Box img{
+    width:100%;
+    aspect-ratio: 16/9;
+    
 }
 .history_Box h4{
     padding-top: 3%;

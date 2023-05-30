@@ -2,7 +2,7 @@
 // Including your database file     
 include 'database.php';
 // Initializing the credentials for your database
-$con = new MySQLiConnection("localhost", "root", "11111111", "teashop");
+$con = new MySQLiConnection("localhost", "root", "", "teashop");
 // Connecting to your database
 $db = new DB($con); 
 session_start();

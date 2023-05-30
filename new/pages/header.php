@@ -2,7 +2,7 @@
 $email = isset($_SESSION['username']) ? $_SESSION['username'] : 'not logged in';
 echo "<script>let email = '$email';</script>";
 ?>
-<header class="row w-100 m-auto justify-between">
+<header class="row m-auto justify-between">
     <section class="col-4">
         <img src="./src/images/7.jpg"/>
     </section>

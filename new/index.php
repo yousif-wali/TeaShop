@@ -12,17 +12,35 @@
 
     <!-- Title  TeaShop_And_Image_Coffe_In_Header -->
 
-   
-    <div class='Title_TeaShop'>
+    <section>
+        <section class="slideshow">
+            <div class='Title_TeaShop'>
+                <section>
+                    <h1>Tea Shop</h1>
+                    <h4>Tea, a beverage enjoyed by millions around the world,has a rich and
+                        fascinating history that spans thousandsof years. Here is a brief
+                        overview of its origins and  development:<h4>
+                </section>
+                <section class='image_Coffe'>
+                        <img src="./src/images/Tea_Coffe.png" alt="">
+                </section>
+            </div>
+        </section>
+        <section class="slideshow">
+            <div class='Title_TeaShop '>
+                <section>
+                    <h1>Market Shop</h1>
+                    <h4>Tea, a beverage enjoyed by millions around the world,has a rich and
+                        fascinating history that spans thousandsof years. Here is a brief
+                        overview of its origins and  development:<h4>
+                </section>
+                <section class='image_Coffe'>
+                        <img src="./src/images/jehan.png" alt="">
+                </section>
+            </div>
+        </section>
+    </section>
 
-    <h1>Tea Shop</h1>
-    <h4>Tea, a beverage enjoyed by millions around the world,has a rich and
-        fascinating history that spans thousandsof years. Here is a brief
-        overview of its origins and  development:<h4>
-    </div>
-    <div class='image_Coffe'>
-        <img src="Tea_Coffe.png" alt="">
-    </div>
     <main>
         <?php include "./pages/posts.php";?>
     </main>
@@ -37,7 +55,7 @@
         overview of its origins and  development:</h4>
 
 
-        <img src="jehan.jpg" width="100px">
+        <img src="./src/images/jehan.png">
 
 
     </div>
@@ -47,6 +65,7 @@
     <script>
             updateBookmark(email);
             updateCart(email);
+            w3.slideshow(".slideshow", 2000);
     </script>
 </body>
 </html>

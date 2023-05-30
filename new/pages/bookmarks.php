@@ -17,7 +17,7 @@
     if($items != null){
         foreach($items as $item){
           //  $id = $item[0];
-            $itemId = $item['id'];
+            $itemId = $item['items'];
             $post = getAllPostsById($db, $itemId);
             foreach($post as $detail){
                 $image = $detail['img'];

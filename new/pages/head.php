@@ -11,12 +11,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <base href="http://localhost/2023 Projects/Teashop/new/">
-<script src="./src/scripts/main.js"></script>
+<script src="./src/scripts/tilt.js" async></script>
+<script src="./src/scripts/main.js" async></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js" defer></script>
+<script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js" defer></script>

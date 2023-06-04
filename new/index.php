@@ -16,10 +16,8 @@
         <section class="slideshow">
             <div class='Title_TeaShop'>
                 <section>
-                    <h1>Tea Shop</h1>
-                    <h4>Tea, a beverage enjoyed by millions around the world,has a rich and
-                        fascinating history that spans thousandsof years. Here is a brief
-                        overview of its origins and  development:<h4>
+                    <h1>چایێ دەمباش</h1>
+                    <h4>!خووشترین و بەتامترین چایێ لە سەرانسەرێ ئێراقێ<h4>
                 </section>
                 <section class='image_Coffe'>
                         <img src="./src/images/Tea_Coffe.png" alt="">
@@ -29,19 +27,20 @@
         <section class="slideshow">
             <div class='Title_TeaShop '>
                 <section>
-                    <h1>Market Shop</h1>
-                    <h4>Tea, a beverage enjoyed by millions around the world,has a rich and
-                        fascinating history that spans thousandsof years. Here is a brief
-                        overview of its origins and  development:<h4>
+                    <h1>باشترین چا</h1>
+                    <h4>بەناووبانگترین چا لە جیهانێ<h4>
                 </section>
                 <section class='image_Coffe'>
-                        <img src="./src/images/jehan.png" alt="">
+                        <img src="./src/images/jehan.jpg" alt="">
                 </section>
             </div>
         </section>
     </section>
 
     <main>
+        <section id="cube">
+            <?php include "./pages/cube.php";?>
+        </section>
         <?php include "./pages/posts.php";?>
     </main>
 
@@ -55,17 +54,16 @@
         overview of its origins and  development:</h4>
 
 
-        <img src="./src/images/jehan.png">
+        <img src="./src/images/jehan.jpg">
 
 
     </div>
-    <?php include "./pages/cube.php";?>
     <?php include "./pages/footer.php";?>
   
     <script>
             updateBookmark(email);
             updateCart(email);
-            w3.slideshow(".slideshow", 2000);
+            w3.slideshow(".slideshow", 7000);
     </script>
 </body>
 </html>

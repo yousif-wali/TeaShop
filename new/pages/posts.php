@@ -10,11 +10,11 @@
             $image = $item['img'];
             $uploaded = $item['dateuploaded'];
             echo "
-            <section class='post'>
+            <section class='post tilt'>
           
-            <img src='./src/images/$image'/>
+            <img class='tilt' src='./src/images/$image'/>
             <h4>$title</h4>
-            <p>$$price</p>
+            <!--<p>$$price</p> -->
             <h6>$description</h6>
             <section class='flex flex-column'>
                 <i class='bi bi-bookmark-plus col-5 btn btn-danger' onclick='addBookmark($id, `$email`)'></i>

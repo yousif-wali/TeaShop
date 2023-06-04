@@ -9,18 +9,14 @@
 @font-face {
 font-family: 'ayman';
 src: url( 'rabar.woff');
-
 }
 /*       background_Color_Body         */
-body {
-   
+body {  
     background-image: linear-gradient(to right ,#864e2d,#a67a4d);
-
 }
-
 /*          Header      */
 header{   
-    
+    z-index:99999;
     position:sticky;
     top:0;
     background-image: linear-gradient(to bottom ,#c17508,#863e00);
@@ -64,7 +60,6 @@ header section:nth-child(2){
     left:12px;
     top:-5px;
 }
-
 .icons{
     padding:1em;
     display:flex;
@@ -81,23 +76,39 @@ header section:nth-child(2){
    color:orange
 }
 /*          MAIN        */
-
+body{
+    overflow-x:none;
+}
+#cube{
+    display:flex;
+    justify-content: center;  
+}
 .Title_TeaShop{
     display: flex!important;
     color: rgb(235, 216, 183);
-    text-align: justify;
+    text-align: right;
     word-spacing: 3px;
     padding:3em;  
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: start;
 }
+.Title_TeaShop section:nth-child(1){
+    min-width:400px;
+}
+.image_Coffe{
+    max-width:400px;
+    min-width:400px;
+    padding:1em;
+    position:relative;
+}
 .Title_TeaShop img{
-    width:60%;
+    width:100%;
     aspect-ratio: 16/9;
     float:right;
 }
 #slideshowContainer{
     min-height:350px;
+    margin-top:10px;
 }
 #slideshowContainer > *{
     height:100%;
@@ -105,11 +116,8 @@ header section:nth-child(2){
 .slideshow{
     transition: all 1s ease-in;
 }
-
 /*          A brief history of tea_Style        */
-
 .history_Box{
-
     border: 2px solid #e78f41;
     color: white;
     margin: 5%;
@@ -125,22 +133,22 @@ header section:nth-child(2){
 .history_Box h4{
     padding-top: 3%;
 }
-
 .posts{
-  
     width:80vw;
     margin:3em auto;
     display:grid;
     grid-template-columns: 270px 270px 270px;
     align-items: start;
     gap: 20px;
+    transform-style:preserve-3d;
 }
 .post{
+    perspective: 250px;
     background-image: linear-gradient(to right ,#ad7949,#c89c6b);
     padding:1.5em;
     border-radius:12px;
     box-shadow:0px 0px 20px rgba(56, 34, 0, 0.781);
-    transition:all 0.3s ease-in;
+    overflow:hidden;
 }
 .post:hover{
     box-shadow:0px 0px 20px  rgba(255, 153, 0, 0.5);
@@ -149,6 +157,10 @@ header section:nth-child(2){
     width:100%;
     border-radius:15px;
     aspect-ratio: 1/1;
+   
+}
+.post:hover img{
+    box-shadow:0px 0px 7px 5px #ad7949;
 }
 .post i.bi{
     font-size:1.2rem;
@@ -156,12 +168,26 @@ header section:nth-child(2){
 @media screen and (max-width: 60em){
     .posts{
         grid-template-columns: 270px;
-        width:60vw;
+        width:70vw;
     }
     .navbar-large{
         display:none;
     }
     .extra-space{
         display:block!important;
+    }
+    .icons{
+        width:100%;
+    }
+    .Title_TeaShop{
+        flex-direction:column;
+        padding:0em;
+    }
+    .Title_TeaShop section:nth-child(1), .image_Coffe{
+        min-width:100%;
+        padding:0 1em;
+    }
+    form{
+        width:80vw!important;
     }
 }

@@ -3,7 +3,7 @@ $email = isset($_SESSION['username']) ? $_SESSION['username'] : 'not logged in';
 echo "<script>let email = '$email';</script>";
 ?>
 <header class="row m-auto justify-between">
-    <section class="col-4">
+    <section class="col-4 navbar-large">
         <img src="./src/images/7.jpg"/>
     </section>
     <section class="col-4 navbar navbar-large navbar-expand">
@@ -15,13 +15,10 @@ echo "<script>let email = '$email';</script>";
             <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
         </ul>
     </section>
-    <section class="extra-space col-4" style="display:none;">
-    &nbsp;
-    </section>
     <section class="col-4 icons">
         <?php
         if(isset($_SESSION['email'])){
-            echo '<span onclick="window.location = `./include/validator.php?logout`">Logout</span>';
+            echo '<span onclick="window.location = `./include/validator.php?logout`" style="cursor:pointer;">Logout</span>';
         }else{
             echo '<a href="./pages/login.php"><i class="bi bi-person"></i></a>';
         }
